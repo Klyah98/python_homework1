@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+    - 5000:5000
+    depends_on:
+      - redis
+  ml_worker:
+    build:
+      context: ./ml_worker
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - redis
+      - mongo_db
+  mongo_db:
+    restart: always
+    image: mongo:4.4.10
+  redis:
+    restart: always
+    image: redis
+
