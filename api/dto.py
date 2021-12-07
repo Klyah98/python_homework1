@@ -3,7 +3,6 @@ from flask_restx import Model
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
-
 models_list = Model(
     'models list',
     {
