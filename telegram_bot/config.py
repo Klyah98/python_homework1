@@ -1,5 +1,5 @@
-TOKEN = '1956884869:AAElIh-CVBhq6FUazrCouJYwv5J-ks7FD3Y'
-api_info_endpoint = 'http://127.0.0.1:5000/test_api/ml_models'
-api_train_endpoint = 'http://127.0.0.1:5000/test_api/ml_models/train'
-api_delete_endpoint = 'http://127.0.0.1:5000/test_api/ml_models/delete'
-api_predict_endpoint = 'http://127.0.0.1:5000/test_api/ml_models/predict'
+TOKEN = "1956884869:AAElIh-CVBhq6FUazrCouJYwv5J-ks7FD3Y"
+api_info_endpoint = "http://127.0.0.1:5000/test_api/ml_models"
+api_train_endpoint = "http://127.0.0.1:5000/test_api/ml_models/train"
+api_delete_endpoint = "http://127.0.0.1:5000/test_api/ml_models/delete"
+api_predict_endpoint = "http://127.0.0.1:5000/test_api/ml_models/predict"

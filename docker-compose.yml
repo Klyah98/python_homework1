@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   api:
     build:
       context: ./api
@@ -7,20 +8,47 @@ services:
     restart: always
     ports:
     - 5000:5000
+    volumes:
+      - logging_volume:/log_files
     depends_on:
       - redis
+
+  prometheus:
+    image: prom/prometheus:latest
+    depends_on:
+      - api
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana.ini:/etc/grafana/grafana.ini
+    links:
+      - prometheus
+
   ml_worker:
     build:
       context: ./ml_worker
       dockerfile: Dockerfile
     restart: always
+    volumes:
+      - logging_volume:/log_files
     depends_on:
       - redis
       - mongo_db
+
   mongo_db:
     restart: always
     image: mongo:4.4.10
+
   redis:
     restart: always
     image: redis
 
+volumes:
+  logging_volume:
